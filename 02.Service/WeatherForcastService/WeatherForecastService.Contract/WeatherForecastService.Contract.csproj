@@ -9,7 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\01.ServiceStack\JServiceStack\JServiceStack.csproj" />
+      <ProjectReference Include="..\..\..\01.ServiceStack\JServiceStack\JServiceStack.csproj" />
     </ItemGroup>
 
 </Project>

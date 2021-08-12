@@ -4,12 +4,12 @@ using JServiceStack.Configs;
 
 namespace JServiceStack.Database
 {
-    internal class JDBKeyIVProvider
+    internal class JDatabaseKeyIVProvider
     {
-        private static readonly Lazy<JDBKeyIVProvider> _instance =
-            new(() => new JDBKeyIVProvider());
+        private static readonly Lazy<JDatabaseKeyIVProvider> _instance =
+            new(() => new JDatabaseKeyIVProvider());
 
-        public JDBKeyIVProvider()
+        public JDatabaseKeyIVProvider()
         {
             var keyiv = Get();
             Key = keyiv.key;
@@ -19,15 +19,15 @@ namespace JServiceStack.Database
         public string Key { get; }
         public string IV { get; }
 
-        public static JDBKeyIVProvider Instance => _instance.Value;
+        public static JDatabaseKeyIVProvider Instance => _instance.Value;
 
         public (string key, string iv) Get()
         {
             //setting key & iv, read file or http request
             var configPath = JCONFIG_CONST.DB_CONFIG_PATH;
             var configJson = configPath.xFileReadAllText();
-            var dbConfig = configJson.xToEntity<JDBConfig>();
-            return new ValueTuple<string, string>(dbConfig.DBConfigProvider.KEY, dbConfig.DBConfigProvider.CHIPER);
+            var dbConfig = configJson.xToEntity<JDatabaseConfig>();
+            return new ValueTuple<string, string>(dbConfig.ConfigProvider.KEY, dbConfig.ConfigProvider.CHIPER);
         }
     }
 }

@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\01.ServiceStack\JServiceStack.Web\JServiceStack.Web.csproj" />
+      <ProjectReference Include="..\..\..\01.ServiceStack\JServiceStack.Web\JServiceStack.Web.csproj" />
       <ProjectReference Include="..\AccountService.Contract\AccountService.Contract.csproj" />
       <ProjectReference Include="..\AccountService.Implement\AccountService.Implement.csproj" />
     </ItemGroup>

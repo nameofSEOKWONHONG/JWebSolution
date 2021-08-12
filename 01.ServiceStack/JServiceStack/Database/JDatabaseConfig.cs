@@ -1,11 +1,11 @@
 ﻿namespace JServiceStack.Database
 {
-    public class JDBConfig
+    public class JDatabaseConfig
     {
-        public JDBConfigProvider DBConfigProvider { get; set; }
+        public JDatabaseConfigProvider ConfigProvider { get; set; }
     }
 
-    public class JDBConfigProvider
+    public class JDatabaseConfigProvider
     {
         public string MSSQL { get; set; }
         public string MYSQL { get; set; }

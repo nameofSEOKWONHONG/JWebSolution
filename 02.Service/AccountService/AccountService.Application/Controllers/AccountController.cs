@@ -9,13 +9,11 @@ namespace AccountService.Application.Controllers
 {
     public class AccountController : JContollerBase
     {
-        private readonly IAccountService _accountSvc;
         private readonly IGetAccountService _getAccountService;
 
-        public AccountController(ILogger<AccountController> logger, IAccountService accountSvc,
+        public AccountController(ILogger<AccountController> logger, 
             IGetAccountService getAccountService) : base(logger)
-        {
-            _accountSvc = accountSvc;
+        {       
             _getAccountService = getAccountService;
         }
 

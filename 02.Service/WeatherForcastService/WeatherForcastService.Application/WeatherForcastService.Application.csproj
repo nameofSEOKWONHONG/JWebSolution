@@ -9,7 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\01.ServiceStack\JServiceStack.Web\JServiceStack.Web.csproj" />
+      <ProjectReference Include="..\..\..\01.ServiceStack\JServiceStack.Web\JServiceStack.Web.csproj" />
       <ProjectReference Include="..\WeatherForecastService.Contract\WeatherForecastService.Contract.csproj" />
       <ProjectReference Include="..\WeatherForecastService.Implement\WeatherForecastService.Implement.csproj" />
     </ItemGroup>
