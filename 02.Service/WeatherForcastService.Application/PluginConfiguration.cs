@@ -1,4 +1,4 @@
-﻿using JServiceStack.WebApiBase;
+﻿using JServiceStack.Web;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace WeatherForcastService.Application

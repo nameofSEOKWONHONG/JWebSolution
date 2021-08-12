@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using JServiceStack.Web;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using WebApiBase;
 
-namespace AccountPlugin.Controllers
+namespace AccountService.Application.Controllers
 {
     public class LoginTokenController : JContollerBase
     {

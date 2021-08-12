@@ -1,8 +1,8 @@
 ﻿using AccountService.Contract.Interfaces;
-using JServiceStack.WebApiBase;
+using JServiceStack.Web;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AccountPlugin
+namespace AccountService.Application
 {
     public class PluginConfiguration : IPluginFactory
     {

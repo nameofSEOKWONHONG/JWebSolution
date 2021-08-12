@@ -7,7 +7,7 @@ namespace JServiceStack.Service
     {
         Task<bool> ValidateAsync();
         Task<bool> ExecutingAsync();
-        Task<object> ExecuteAsync();
+        Task ExecuteAsync();
         Task ExecutedAsync();
     }
 }

@@ -4,7 +4,7 @@ using JServiceStack.Service;
 
 namespace AccountService.Contract.Interfaces
 {
-    public interface IGetAccountService : IServiceExecutor<int, bool>
+    public interface IGetAccountService : IServiceExecutor<long, ACCOUNT>
     {
     }
 

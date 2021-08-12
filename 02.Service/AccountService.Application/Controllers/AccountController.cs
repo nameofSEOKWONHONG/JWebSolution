@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
 using AccountService.Contract.Interfaces;
+using Entity;
+using JServiceStack.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApiBase;
 
-namespace AccountPlugin.Controllers
+namespace AccountService.Application.Controllers
 {
     public class AccountController : JContollerBase
     {
@@ -19,9 +20,9 @@ namespace AccountPlugin.Controllers
         }
 
         [HttpGet]
-        public async Task<bool> GetUser(int uid)
+        public async Task<ACCOUNT> GetAccount(long uid)
         {
-            return await ExecuteSerivceAsync<IGetAccountService, int, bool>(_getAccountService, uid);
+            return await ExecuteSerivceAsync<IGetAccountService, long, ACCOUNT>(_getAccountService, uid);
         }
     }
 }

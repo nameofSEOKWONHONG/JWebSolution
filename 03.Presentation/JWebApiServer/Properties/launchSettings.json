@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ECXWebApiServer": {
+    "JWebApiServer": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

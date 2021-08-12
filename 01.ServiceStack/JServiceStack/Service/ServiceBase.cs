@@ -2,12 +2,12 @@
 
 namespace JServiceStack.Service
 {
-    public abstract class ServiceBase<TResult> : IServiceBase
+    public abstract class ServiceBase : IServiceBase
     {
         public abstract void Dispose();
         public abstract Task<bool> ValidateAsync();
         public abstract Task<bool> ExecutingAsync();
-        public abstract Task<object> ExecuteAsync();
+        public abstract Task ExecuteAsync();
         public abstract Task ExecutedAsync();
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
-namespace WebApiBase
+namespace JServiceStack.Web
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

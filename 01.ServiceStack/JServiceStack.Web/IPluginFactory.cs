@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace JServiceStack.WebApiBase
+namespace JServiceStack.Web
 {
     public interface IPluginFactory
     {

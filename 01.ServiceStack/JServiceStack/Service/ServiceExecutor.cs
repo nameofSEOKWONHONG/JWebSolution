@@ -2,7 +2,7 @@
 
 namespace JServiceStack.Service
 {
-    public class ServiceExecutor<TOwner, TRequest, TResult> : ServiceBase<TResult>, IServiceExecutor<TRequest, TResult>
+    public class ServiceExecutor<TOwner, TRequest, TResult> : ServiceBase, IServiceExecutor<TRequest, TResult>
         where TOwner : ServiceExecutor<TOwner, TRequest, TResult>
     {
         protected readonly TOwner Owner;
@@ -29,7 +29,7 @@ namespace JServiceStack.Service
             return Task.FromResult(true);
         }
 
-        public override Task<object> ExecuteAsync()
+        public override Task ExecuteAsync()
         {
             return null;
         }

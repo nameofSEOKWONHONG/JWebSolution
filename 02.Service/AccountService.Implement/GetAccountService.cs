@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AccountService.Contract.Interfaces;
@@ -7,7 +8,7 @@ using JServiceStack.Service;
 
 namespace AccountService.Implement
 {
-    public class GetAccountService : ServiceExecutor<GetAccountService, int, bool>,
+    public class GetAccountService : ServiceExecutor<GetAccountService, long, ACCOUNT>,
         IGetAccountService
     {
         public override Task<bool> ValidateAsync()
@@ -15,9 +16,9 @@ namespace AccountService.Implement
             return Task.FromResult(true);
         }
 
-        public override Task<object> ExecuteAsync()
+        public override async Task ExecuteAsync()
         {
-            return base.ExecuteAsync();
+            await Task.Run(() => this.Result = new ACCOUNT() {Id = 1, NAME = "test", TEL = "000-000-0000", EMAIL = "test@gmail.com", CreationDate = DateTime.Now});
         }
     }
 

@@ -21,7 +21,7 @@ namespace JServiceStack.Service
                 var ing = await _service.ExecutingAsync();
                 if (ing)
                 {
-                    result = (TResult) await _service.ExecuteAsync();
+                    await _service.ExecuteAsync();
                     await _service.ExecutedAsync();
                 }
             }
