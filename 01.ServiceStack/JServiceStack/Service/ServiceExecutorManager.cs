@@ -2,8 +2,8 @@
 
 namespace JServiceStack.Service
 {
-    public class ServiceExecutorManager<TServiceBase>
-        where TServiceBase : IServiceBase
+    public class ServiceExecutorManager<TServiceBase, TResult>
+        where TServiceBase : IServiceBase<TResult>
     {
         private readonly TServiceBase _service;
 
@@ -12,7 +12,7 @@ namespace JServiceStack.Service
             _service = service;
         }
 
-        public async Task<TResult> ExecuteAsync<TResult>()
+        public async Task<TResult> ExecuteAsync()
         {
             var result = default(TResult);
             var valid = await _service.ValidateAsync();
@@ -21,7 +21,7 @@ namespace JServiceStack.Service
                 var ing = await _service.ExecutingAsync();
                 if (ing)
                 {
-                    await _service.ExecuteAsync();
+                    result = await _service.ExecuteAsync();
                     await _service.ExecutedAsync();
                 }
             }

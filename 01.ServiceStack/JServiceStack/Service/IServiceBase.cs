@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 
 namespace JServiceStack.Service
 {
-    public interface IServiceBase : IDisposable
+    public interface IServiceBase<TResult> : IDisposable
     {
         Task<bool> ValidateAsync();
         Task<bool> ExecutingAsync();
-        Task ExecuteAsync();
+        Task<TResult> ExecuteAsync();
         Task ExecutedAsync();
     }
 }

@@ -15,15 +15,15 @@ namespace JServiceStack.Database
         private static Dictionary<string, string> _providerMaps;
         private static readonly AsyncLock _mutex = new();
 
-        public readonly string MSSQL = ProviderMaps[ENUM_RDB_TYPE.MSSQL.ToString()].xToDecAES256(
+        public readonly string MSSQL = ProviderMaps[ENUM_DATABASE_TYPE.MSSQL.ToString()].xToDecAES256(
             JDatabaseKeyIVProvider.Instance.Key,
             JDatabaseKeyIVProvider.Instance.IV, CipherMode.CBC, PaddingMode.PKCS7, DeconvertCipherFormat.HEX);
 
-        public readonly string MYSQL = ProviderMaps[ENUM_RDB_TYPE.MYSQL.ToString()].xToDecAES256(
+        public readonly string MYSQL = ProviderMaps[ENUM_DATABASE_TYPE.MYSQL.ToString()].xToDecAES256(
             JDatabaseKeyIVProvider.Instance.Key,
             JDatabaseKeyIVProvider.Instance.IV, CipherMode.CBC, PaddingMode.PKCS7, DeconvertCipherFormat.HEX);
 
-        public readonly string POSTGRESQL = ProviderMaps[ENUM_RDB_TYPE.POSTGRESQL.ToString()].xToDecAES256(
+        public readonly string POSTGRESQL = ProviderMaps[ENUM_DATABASE_TYPE.POSTGRESQL.ToString()].xToDecAES256(
             JDatabaseKeyIVProvider.Instance.Key,
             JDatabaseKeyIVProvider.Instance.IV, CipherMode.CBC, PaddingMode.PKCS7, DeconvertCipherFormat.HEX);
 
@@ -43,8 +43,8 @@ namespace JServiceStack.Database
                             var configJson = configFile.xFileReadAllText();
 
                             var jconfig = configJson.xToEntity<JDatabaseConfig>();
-                            _providerMaps.Add(ENUM_RDB_TYPE.MSSQL.xSafe(), jconfig.ConfigProvider.MSSQL);
-                            _providerMaps.Add(ENUM_RDB_TYPE.POSTGRESQL.xSafe(),
+                            _providerMaps.Add(ENUM_DATABASE_TYPE.MSSQL.xSafe(), jconfig.ConfigProvider.MSSQL);
+                            _providerMaps.Add(ENUM_DATABASE_TYPE.POSTGRESQL.xSafe(),
                                 jconfig.ConfigProvider.POSTGRESQL);
                         }
                     }

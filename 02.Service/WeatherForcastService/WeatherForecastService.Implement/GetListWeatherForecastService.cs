@@ -21,10 +21,10 @@ namespace WeatherForecastService.Implement
             return base.ExecutingAsync();
         }
 
-        public override async Task ExecuteAsync()
+        public override async Task<IEnumerable<WEATHER_FORECAST>> ExecuteAsync()
         {
             var results = new List<WEATHER_FORECAST>();
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
                 var rng = new Random();
                 results.AddRange(Enumerable.Range(1, 5).Select(index => new WEATHER_FORECAST
@@ -35,9 +35,8 @@ namespace WeatherForecastService.Implement
                         Summary = Summaries[rng.Next(Summaries.Length)]
                     })
                     .ToArray());
+                return results;
             });
-
-            this.Result = results;
         }
 
         public override Task ExecutedAsync()

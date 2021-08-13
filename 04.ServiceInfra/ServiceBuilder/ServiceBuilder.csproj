@@ -5,4 +5,9 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\eXtensionSharp\src\eXtensionSharp.csproj" />
+      <ProjectReference Include="..\..\01.ServiceStack\JServiceStack\JServiceStack.csproj" />
+    </ItemGroup>
+
 </Project>

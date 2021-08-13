@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "LoginApiPlugin": {
+    "AccountService.Application": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

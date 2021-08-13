@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WeatherForcastPlugin": {
+    "WeatherForcastService.Applcation": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

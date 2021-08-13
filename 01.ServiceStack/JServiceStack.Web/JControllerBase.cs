@@ -24,12 +24,12 @@ namespace JServiceStack.Web
             MemoryCache = memoryCache;
         }
 
-        public async Task<TResult> ExecuteSerivceAsync<TService, TRequest, TResult>(TService service, TRequest request)
-            where TService : IServiceBase
+        protected async Task<TResult> ExecuteSerivceAsync<TService, TRequest, TResult>(TService service, TRequest request)
+            where TService : IServiceBase<TResult>
         {
             var rlt = default(TResult);
-            var serviceExecutor = new ServiceExecutorManager<TService>(service);
-            rlt = await serviceExecutor.ExecuteAsync<TResult>();
+            var serviceExecutor = new ServiceExecutorManager<TService, TResult>(service);
+            rlt = await serviceExecutor.ExecuteAsync();
             return rlt;
         }
     }

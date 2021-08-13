@@ -14,7 +14,7 @@ namespace JServiceStack.Database
         private readonly Dictionary<string, Func<string, IDbConnection>> _connectionMaps = new()
         {
             {
-                ENUM_RDB_TYPE.MSSQL.ToString(), connectionString =>
+                ENUM_DATABASE_TYPE.MSSQL.ToString(), connectionString =>
                 {
                     //no more use System.Data.SqlClient.SqlConnection
                     //replace Microsoft.Data.SqlClient.SqlConnection
@@ -23,7 +23,7 @@ namespace JServiceStack.Database
                 }
             },
             {
-                ENUM_RDB_TYPE.POSTGRESQL.ToString(), connectionString =>
+                ENUM_DATABASE_TYPE.POSTGRESQL.ToString(), connectionString =>
                 {
                     PostgreSqlBootstrap.Initialize();
                     return new NpgsqlConnection(JDatabaseProvider.Instance.POSTGRESQL);
@@ -40,7 +40,7 @@ namespace JServiceStack.Database
         public Dictionary<string, IDbConnection> Connections { get; } =
             new();
 
-        public IDbConnection GetConnection(ENUM_RDB_TYPE dbType)
+        public IDbConnection GetConnection(ENUM_DATABASE_TYPE dbType)
         {
             return _connectionMaps[dbType.ToString()].Invoke(dbType.ToString());
         }

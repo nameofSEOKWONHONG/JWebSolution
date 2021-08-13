@@ -13,7 +13,7 @@ namespace AccountService.Implement
             return base.ValidateAsync();
         }
 
-        public override Task ExecuteAsync()
+        public override Task<IEnumerable<ACCOUNT>> ExecuteAsync()
         {
             return base.ExecuteAsync();
         }

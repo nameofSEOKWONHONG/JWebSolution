@@ -16,9 +16,9 @@ namespace AccountService.Implement
             return Task.FromResult(true);
         }
 
-        public override async Task ExecuteAsync()
+        public override async Task<ACCOUNT> ExecuteAsync()
         {
-            await Task.Run(() => this.Result = new ACCOUNT() {Id = 1, NAME = "test", TEL = "000-000-0000", EMAIL = "test@gmail.com", CreationDate = DateTime.Now});
+            return await Task.Run(() => new ACCOUNT() {Id = 1, NAME = "test", TEL = "000-000-0000", EMAIL = "test@gmail.com", CreationDate = DateTime.Now});
         }
     }
 }

@@ -9,6 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.Data.SqlClient" Version="3.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
       <PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
       <PackageReference Include="RepoDb" Version="1.12.7" />

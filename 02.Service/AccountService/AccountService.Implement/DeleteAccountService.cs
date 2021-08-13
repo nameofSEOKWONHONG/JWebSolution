@@ -11,7 +11,7 @@ namespace AccountService.Implement
             return base.ValidateAsync();
         }
 
-        public override Task ExecuteAsync()
+        public override Task<bool> ExecuteAsync()
         {
             return base.ExecuteAsync();
         }
