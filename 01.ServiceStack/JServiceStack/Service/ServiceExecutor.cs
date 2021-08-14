@@ -1,19 +1,17 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data;
+using System.Threading.Tasks;
+using System.Transactions;
+using JServiceStack.Database;
 
 namespace JServiceStack.Service
 {
-    public class ServiceExecutor<TOwner, TRequest, TResult> : ServiceBase<TResult>, IServiceExecutor<TRequest, TResult>
-        where TOwner : ServiceExecutor<TOwner, TRequest, TResult>
+    public class ServiceExecutor<TRequest, TResult> : ServiceBase<TResult>, IServiceExecutor<TRequest, TResult>
     {
-        protected readonly TOwner Owner;
-
-        public ServiceExecutor()
+        protected ServiceExecutor()
         {
-            Owner = (TOwner) this;
         }
 
         public TRequest Request { get; set; }
-        public TResult Result { get; set; }
 
         public override void Dispose()
         {
@@ -42,6 +40,12 @@ namespace JServiceStack.Service
         public override Task OnFailedAsync()
         {
             return Task.CompletedTask;
+        }
+
+        protected JDatabaseExecutor DbExecutor<TDatabaseConnection>(TransactionScopeOption option = TransactionScopeOption.Suppress) 
+            where TDatabaseConnection : IDbConnection
+        {
+            return JDatabaseResolver.Resolve<TDatabaseConnection>(option);
         }
     }
 }

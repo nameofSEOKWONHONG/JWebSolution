@@ -4,7 +4,7 @@ using JServiceStack.Entity;
 namespace Entity
 {
     [Table("ACCOUNT")]
-    public class ACCOUNT : EntityBase
+    public class ACCOUNT : ENTITY_BASE
     {
         public string USER_ID { get; set; }
         public string PASSWORD { get; set; }

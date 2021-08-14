@@ -8,23 +8,23 @@ namespace JServiceStack.Web
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class JContollerBase : ControllerBase
+    public class JControllerBase : ControllerBase
     {
         protected readonly ILogger Logger;
         protected readonly IMemoryCache MemoryCache;
 
-        public JContollerBase(ILogger logger)
+        public JControllerBase(ILogger logger)
         {
             Logger = logger;
         }
 
-        public JContollerBase(ILogger logger, IMemoryCache memoryCache)
+        public JControllerBase(ILogger logger, IMemoryCache memoryCache)
         {
             Logger = logger;
             MemoryCache = memoryCache;
         }
 
-        protected async Task<TResult> ExecuteSerivceAsync<TService, TRequest, TResult>(TService service, TRequest request)
+        protected async Task<TResult> SerivceExecuteAsync<TService, TRequest, TResult>(TService service, TRequest request)
             where TService : IServiceBase<TResult>
         {
             var rlt = default(TResult);
@@ -33,4 +33,6 @@ namespace JServiceStack.Web
             return rlt;
         }
     }
+
+
 }

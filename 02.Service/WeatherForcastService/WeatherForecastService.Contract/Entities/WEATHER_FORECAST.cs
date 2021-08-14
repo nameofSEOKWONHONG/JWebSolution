@@ -3,7 +3,7 @@ using JServiceStack.Entity;
 
 namespace Entity
 {
-    public class WEATHER_FORECAST : EntityBase
+    public class WEATHER_FORECAST : ENTITY_BASE
     {
         public DateTime Date { get; set; }
 

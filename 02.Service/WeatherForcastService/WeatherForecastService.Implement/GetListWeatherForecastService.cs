@@ -8,7 +8,7 @@ using WeatherForecastService.Contract.Interfaces;
 
 namespace WeatherForecastService.Implement
 {
-    public class GetListWeatherForecastService : ServiceExecutor<GetListWeatherForecastService, int, IEnumerable<WEATHER_FORECAST>>,
+    public class GetListWeatherForecastService : ServiceExecutor<int, IEnumerable<WEATHER_FORECAST>>,
         IGetListWeatherForecastService
     {
         private static readonly string[] Summaries =
@@ -29,7 +29,7 @@ namespace WeatherForecastService.Implement
                 var rng = new Random();
                 results.AddRange(Enumerable.Range(1, 5).Select(index => new WEATHER_FORECAST
                     {
-                        Id = index,
+                        ID = index,
                         Date = DateTime.Now.AddDays(index),
                         TemperatureC = rng.Next(-20, 55),
                         Summary = Summaries[rng.Next(Summaries.Length)]

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AccountService.Application.Controllers
 {
-    public class AccountController : JContollerBase
+    public class AccountController : JControllerBase
     {
         private readonly IGetAccountService _getAccountService;
 
@@ -20,7 +20,7 @@ namespace AccountService.Application.Controllers
         [HttpGet]
         public async Task<ACCOUNT> GetAccount(long uid)
         {
-            return await ExecuteSerivceAsync<IGetAccountService, long, ACCOUNT>(_getAccountService, uid);
+            return await SerivceExecuteAsync<IGetAccountService, long, ACCOUNT>(_getAccountService, uid);
         }
     }
 }

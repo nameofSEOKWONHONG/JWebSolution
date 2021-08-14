@@ -10,7 +10,7 @@ using WeatherForecastService.Contract.Interfaces;
 
 namespace WeatherForcastService.Application.Controllers
 {
-    public class WeatherForecastController : JContollerBase
+    public class WeatherForecastController : JControllerBase
     {
         private readonly IGetListWeatherForecastService _getListWeatherForecastService;
         public WeatherForecastController(ILogger<WeatherForecastController> logger,
@@ -26,7 +26,7 @@ namespace WeatherForcastService.Application.Controllers
 
             if (MemoryCache.TryGetValue("gets", out result)) return result;
 
-            result = await ExecuteSerivceAsync<IGetListWeatherForecastService, int, IEnumerable<WEATHER_FORECAST>>(this._getListWeatherForecastService, 0);
+            result = await SerivceExecuteAsync<IGetListWeatherForecastService, int, IEnumerable<WEATHER_FORECAST>>(this._getListWeatherForecastService, 0);
             
             var cacheOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(10));
             cacheOptions.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);

@@ -6,7 +6,7 @@ using JServiceStack.Service;
 
 namespace AccountService.Implement
 {
-    public class GetsAccountService : ServiceExecutor<GetsAccountService, ACCOUNT, IEnumerable<ACCOUNT>>, IGetsAccountService
+    public class GetsAccountService : ServiceExecutor<ACCOUNT, IEnumerable<ACCOUNT>>, IGetsAccountService
     {
         public override Task<bool> ValidateAsync()
         {

@@ -4,7 +4,7 @@ using JServiceStack.Service;
 
 namespace AccountService.Implement
 {
-    public class DeleteAccountService : ServiceExecutor<DeleteAccountService, long, bool>, IDeleteAccountService
+    public class DeleteAccountService : ServiceExecutor<long, bool>, IDeleteAccountService
     {
         public override Task<bool> ValidateAsync()
         {

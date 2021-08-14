@@ -5,7 +5,7 @@ using JServiceStack.Service;
 
 namespace AccountService.Implement
 {
-    public class LoginService : ServiceExecutor<LoginService, ACCOUNT, bool>, ILoginService
+    public class LoginService : ServiceExecutor<ACCOUNT, bool>, ILoginService
     {
         public override Task<bool> ValidateAsync()
         {

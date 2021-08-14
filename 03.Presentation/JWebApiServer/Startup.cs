@@ -26,7 +26,8 @@ namespace JWebApiServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMemoryCache();
-            var mvcBuilder = services.AddControllers();
+            var mvcBuilder = services.AddControllers()
+                .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
 
             var loaders = GetPluginLoaders(mvcBuilder);
             ConfigureServices(services, loaders);
