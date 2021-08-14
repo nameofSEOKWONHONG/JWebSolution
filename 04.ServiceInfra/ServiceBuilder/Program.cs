@@ -8,60 +8,89 @@ using JServiceStack.Configs;
 
 namespace ServiceBuilder
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            //TODO : add dotnet build command lines
+            // 기존 어플리케이션 삭제
+            if (Directory.Exists(JCONFIG_CONST.APP_PATH)) Directory.Delete(JCONFIG_CONST.APP_PATH, true);
+
             Build();
-            //TODO : main application copy
+
             ApplicationCopy();
-            //TODO : copy controller folder to "plugins"
+
             PluginCopy();
         }
 
-        static void Build()
+        /// <summary>
+        ///     프로젝트 빌드 커맨드
+        /// </summary>
+        private static void Build()
         {
-            string[] paths = new[]
+            string[] paths =
             {
                 @"D:\workspace\JWebSolution\02.Service\AccountService\AccountService.Application",
-                @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForcastService.Application"
+                @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForcastService.Application",
+                @"D:\workspace\JWebSolution\03.Presentation\JWebApiServer"
             };
 
-            paths.xForEach(item =>
-            {
-                Console.WriteLine(CommandOutput($"dotnet build", item));
-            });
+            paths.xForEach(item => { Console.WriteLine(CommandOutput("dotnet build", item)); });
         }
-        
-        static string CommandOutput(string command,
+
+        /// <summary>
+        ///     root 어플리케이션 copy
+        /// </summary>
+        private static void ApplicationCopy()
+        {
+            var paths = new Dictionary<string, string>
+            {
+                { "JWebApiApplication", @"D:\workspace\JWebSolution\03.Presentation\JWebApiServer\bin\Debug\net5.0" }
+            };
+
+            paths.xForEach(item => { item.Value.xCopy(JCONFIG_CONST.APP_PATH); });
+        }
+
+        /// <summary>
+        ///     plugin 어플리케이션 copy
+        /// </summary>
+        private static void PluginCopy()
+        {
+            var paths = new Dictionary<string, string>
+            {
+                {
+                    "AccountService.Application",
+                    @"D:\workspace\JWebSolution\02.Service\AccountService\AccountService.Application\bin\Debug\net5.0"
+                },
+                {
+                    "WeatherForcastService.Application",
+                    @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForcastService.Application\bin\Debug\net5.0"
+                }
+            };
+
+            paths.xForEach(item => { item.Value.xCopy(Path.Combine(JCONFIG_CONST.APP_PLUGIN_PATH, item.Key)); });
+        }
+
+
+        private static string CommandOutput(string command,
             string workingDirectory = null)
         {
             try
             {
-                ProcessStartInfo procStartInfo = new ProcessStartInfo("cmd", "/c " + command);
+                var procStartInfo = new ProcessStartInfo("cmd", "/c " + command);
 
-                procStartInfo.RedirectStandardError = procStartInfo.RedirectStandardInput = procStartInfo.RedirectStandardOutput = true;
+                procStartInfo.RedirectStandardError =
+                    procStartInfo.RedirectStandardInput = procStartInfo.RedirectStandardOutput = true;
                 procStartInfo.UseShellExecute = false;
                 procStartInfo.CreateNoWindow = true;
-                if (null != workingDirectory)
-                {
-                    procStartInfo.WorkingDirectory = workingDirectory;
-                }
+                if (null != workingDirectory) procStartInfo.WorkingDirectory = workingDirectory;
 
-                Process proc = new Process();
+                var proc = new Process();
                 proc.StartInfo = procStartInfo;
                 proc.Start();
 
-                StringBuilder sb = new StringBuilder();
-                proc.OutputDataReceived += delegate (object sender, DataReceivedEventArgs e)
-                {
-                    sb.AppendLine(e.Data);
-                };
-                proc.ErrorDataReceived += delegate (object sender, DataReceivedEventArgs e)
-                {
-                    sb.AppendLine(e.Data);
-                };
+                var sb = new StringBuilder();
+                proc.OutputDataReceived += delegate(object sender, DataReceivedEventArgs e) { sb.AppendLine(e.Data); };
+                proc.ErrorDataReceived += delegate(object sender, DataReceivedEventArgs e) { sb.AppendLine(e.Data); };
 
                 proc.BeginOutputReadLine();
                 proc.BeginErrorReadLine();
@@ -73,26 +102,5 @@ namespace ServiceBuilder
                 return $"Error in command: {command}, {objException.Message}";
             }
         }
-
-        static void ApplicationCopy()
-        {
-            
-        }
-        static void PluginCopy()
-        {
-            
-            var paths = new Dictionary<string, string>()
-            {
-                {"AccountService", @"D:\workspace\JWebSolution\02.Service\AccountService\AccountService.Application\bin\Debug\net5.0"},
-                {"WeatherForcastService", @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForcastService.Application\bin\Debug\net5.0"}
-            };
-            
-            paths.xForEach(item =>
-            {
-                item.Value.xCopy(Path.Combine(JCONFIG_CONST.APP_PLUGIN_PATH, item.Key));
-            });
-        }
     }
-    
-    
 }
