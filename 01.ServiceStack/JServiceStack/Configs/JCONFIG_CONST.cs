@@ -11,7 +11,7 @@
         /// <summary>
         /// db 설정 파일 경로
         /// </summary>
-        public static string DB_CONFIG_PATH = "D:\\JWebService\\Database";        
+        public static string DB_CONFIG_PATH = "D:\\JWebService\\connections.json";        
 
         #endregion
 

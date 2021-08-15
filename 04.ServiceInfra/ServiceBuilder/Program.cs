@@ -67,7 +67,10 @@ namespace ServiceBuilder
                 }
             };
 
-            paths.xForEach(item => { item.Value.xCopy(Path.Combine(JCONFIG_CONST.APP_PLUGIN_PATH, item.Key)); });
+            paths.xForEach(item =>
+            {
+                item.Value.xCopy(Path.Combine(JCONFIG_CONST.APP_PLUGIN_PATH, item.Key));
+            });
         }
 
 

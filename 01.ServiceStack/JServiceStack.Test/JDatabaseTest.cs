@@ -27,11 +27,11 @@ namespace JServiceStack.Test
             var newPersons = new List<Person>();
             var newPerson = new Person() { NAME = "TEST", AGE = 18 };
             newPersons.Add(newPerson);
-            var insertedRows = await JDatabaseResolver.Resolve<SqlConnection>(TransactionScopeOption.Required)
+            var insertedRows = await JDatabaseResolver.Resolve<SqlConnection>()
                 .ExecuteAsync(async db => await db.InsertAllAsync(newPersons));
             Assert.Greater(insertedRows, 0);
 
-            var id = await JDatabaseResolver.Resolve<SqlConnection>(TransactionScopeOption.Required)
+            var id = await JDatabaseResolver.Resolve<SqlConnection>()
                 .ExecuteAsync(async db =>
                 {
                     var p1 = new Person() { NAME = "TEST2", AGE = 18 };
@@ -48,7 +48,7 @@ namespace JServiceStack.Test
             Assert.NotNull(person.First());
             Assert.AreEqual(person.First().AGE, 18);
             
-            var deletedRow = await JDatabaseResolver.Resolve<SqlConnection>(TransactionScopeOption.Required)
+            var deletedRow = await JDatabaseResolver.Resolve<SqlConnection>()
                 .ExecuteAsync(async db => await db.DeleteAsync<Person>(person));
             Assert.Greater(deletedRow, 0);
         }

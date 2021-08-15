@@ -7,7 +7,7 @@ using Nito.AsyncEx;
 
 namespace JServiceStack.Database
 {
-    public class JDatabaseProvider
+    internal class JDatabaseProvider
     {
         private static readonly Lazy<JDatabaseProvider> _dbProvider =
             new(() => new JDatabaseProvider());

@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Threading.Tasks;
-using System.Transactions;
-using JServiceStack.Database;
+﻿using System.Threading.Tasks;
 
 namespace JServiceStack.Service
 {
@@ -40,12 +37,6 @@ namespace JServiceStack.Service
         public override Task OnFailedAsync()
         {
             return Task.CompletedTask;
-        }
-
-        protected JDatabaseExecutor DbExecutor<TDatabaseConnection>(TransactionScopeOption option = TransactionScopeOption.Suppress) 
-            where TDatabaseConnection : IDbConnection
-        {
-            return JDatabaseResolver.Resolve<TDatabaseConnection>(option);
         }
     }
 }
