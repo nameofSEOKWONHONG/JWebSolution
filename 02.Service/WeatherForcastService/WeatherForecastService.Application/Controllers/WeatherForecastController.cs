@@ -8,7 +8,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using WeatherForecastService.Contract.Interfaces;
 
-namespace WeatherForcastService.Application.Controllers
+namespace WeatherForecastService.Application.Controllers
 {
     public class WeatherForecastController : JControllerBase
     {

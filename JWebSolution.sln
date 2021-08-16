@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Implement", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Test", "02.Service\AccountService\AccountService.Test\AccountService.Test.csproj", "{4631505D-3F17-43B0-BAC1-A1124D0E6FE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForcastService.Application", "02.Service\WeatherForcastService\WeatherForcastService.Application\WeatherForcastService.Application.csproj", "{2AC47215-AE5B-4EE3-AB3E-A01F736B5B5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastService.Application", "02.Service\WeatherForcastService\WeatherForecastService.Application\WeatherForecastService.Application.csproj", "{2AC47215-AE5B-4EE3-AB3E-A01F736B5B5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastService.Contract", "02.Service\WeatherForcastService\WeatherForecastService.Contract\WeatherForecastService.Contract.csproj", "{36B9018C-7287-4EC8-A1A3-D89E0300B10C}"
 EndProject

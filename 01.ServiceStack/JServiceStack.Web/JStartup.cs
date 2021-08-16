@@ -1,11 +1,29 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JServiceStack.Web
 {
-    /// <summary>
-    /// REF : https://github.com/DEV-TEAM-RED/aspnet-api-versioning
-    /// </summary>
-    public static class JVersionConfig {
+    public static class JStartup
+    {
+        #region [allow cors]
+
+        public static void AddServiceCors(this IServiceCollection services)
+        {
+            services.AddCors();
+        }
+
+        public static void AddConfigureCors(this IApplicationBuilder app)
+        {
+            app.UseCors(x =>
+            {
+                x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            });
+        }
+
+        #endregion
+
+        #region [version config]
+
         public static void AddVersionConfig(this IServiceCollection services) {
             services.AddApiVersioning(opt => {
                 // opt.AssumeDefaultVersionWhenUnspecified = true;
@@ -33,5 +51,11 @@ namespace JServiceStack.Web
                     options.SubstituteApiVersionInUrl = true;
                 } );
         }
+
+        #endregion
+
+        #region [...]
+
+        #endregion
     }
 }

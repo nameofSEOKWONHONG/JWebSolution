@@ -1,4 +1,6 @@
 <script>
+    import Button from '@smui/button';
+
     let count = 0;
     // the `$:` means 're-run whenever these values change'
     $: if (count >= 10) {
@@ -12,7 +14,7 @@
 
 <h1>Counter</h1>
 
-<button on:click={counterClick}>
+<Button on:click={counterClick}>
     Click me
-</button>
+</Button>
 <p>{count}</p>

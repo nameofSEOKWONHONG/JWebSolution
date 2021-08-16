@@ -30,7 +30,7 @@ namespace ServiceBuilder
             string[] paths =
             {
                 @"D:\workspace\JWebSolution\02.Service\AccountService\AccountService.Application",
-                @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForcastService.Application",
+                @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForecastService.Application",
                 @"D:\workspace\JWebSolution\03.Presentation\JWebApiServer"
             };
 
@@ -62,8 +62,8 @@ namespace ServiceBuilder
                     @"D:\workspace\JWebSolution\02.Service\AccountService\AccountService.Application\bin\Debug\net5.0"
                 },
                 {
-                    "WeatherForcastService.Application",
-                    @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForcastService.Application\bin\Debug\net5.0"
+                    "WeatherForecastService.Application",
+                    @"D:\workspace\JWebSolution\02.Service\WeatherForcastService\WeatherForecastService.Application\bin\Debug\net5.0"
                 }
             };
 

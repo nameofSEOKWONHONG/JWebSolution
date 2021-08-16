@@ -31,6 +31,8 @@ namespace AccountPlugin
             });
             services.AddLogging(config => { config.AddConsole(); });
 
+            services.AddMemoryCache();
+
             var configuration = new PluginConfiguration();
             configuration.Configure(services);
         }

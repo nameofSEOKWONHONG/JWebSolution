@@ -25,6 +25,7 @@ namespace JWebApiServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddServiceCors();
             services.AddMemoryCache();
             var mvcBuilder = services.AddControllers()
                 .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
@@ -59,6 +60,8 @@ namespace JWebApiServer
                 app.UseSwaggerUI(c =>
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "JWebApiServer v1"));
             }
+            
+            app.AddConfigureCors();
 
             app.UseHttpsRedirection();
 
@@ -96,15 +99,19 @@ namespace JWebApiServer
         {
             // Create an instance of plugin types
             foreach (var loader in loaders)
-            foreach (var pluginType in loader
-                .LoadDefaultAssembly()
-                .GetTypes()
-                .Where(t => typeof(IPluginFactory).IsAssignableFrom(t) && !t.IsAbstract))
             {
-                // This assumes the implementation of IPluginFactory has a parameterless constructor
-                var plugin = Activator.CreateInstance(pluginType) as IPluginFactory;
+                var pluginFactories = loader
+                    .LoadDefaultAssembly()
+                    .GetTypes()
+                    .Where(t => typeof(IPluginFactory).IsAssignableFrom(t) && !t.IsAbstract);
+                
+                foreach (var pluginType in pluginFactories)
+                {
+                    // This assumes the implementation of IPluginFactory has a parameterless constructor
+                    var plugin = Activator.CreateInstance(pluginType) as IPluginFactory;
 
-                plugin?.Configure(services);
+                    plugin?.Configure(services);
+                }
             }
         }
     }
