@@ -1,5 +1,4 @@
 <script>
-    // svelte 패키지에서 해당 라이프사이클을 구현하면 됩니다.
     import { onMount, onDestroy, beforeUpdate, afterUpdate, tick } from 'svelte'
     import WeatherItem from "./WeatherItem.svelte";
 
@@ -24,6 +23,8 @@
 
     beforeUpdate(async () => {
         console.log('beforeUpdate');
+        //tick 은 유일하게 컴포넌트가 초기화 또는 업데이트될때 언제든지 호출이 가능합니다.(그래서 다른 생명주기랑은 약간 느낌이 다릅니다)
+        //tick 은 컴포넌트 상태변경이 DOM에 업데이트가 된걸 보장한 후(저는 확실히 DOM에 랜더링까지 반영되었다라고 이해를 하였습니다) Promise 객체를 반환합니다.
         await tick(); // tick : 언제든지 호출가능 + 컴포넌트에 변경사항이 완료가 되었을때 Promise() 반환
         console.log('tick()..');
     });

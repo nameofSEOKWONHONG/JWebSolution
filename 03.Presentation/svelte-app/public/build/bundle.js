@@ -3311,7 +3311,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (72:0) {:else}
+    // (73:0) {:else}
     function create_else_block$1(ctx) {
     	let p;
 
@@ -3320,7 +3320,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "loading...";
     			attr_dev(p, "class", "loading svelte-19l4tv2");
-    			add_location(p, file$1, 72, 2, 1756);
+    			add_location(p, file$1, 73, 2, 1905);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -3337,14 +3337,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(72:0) {:else}",
+    		source: "(73:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:0) {#if weatherItems}
+    // (53:0) {#if weatherItems}
     function create_if_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -3433,14 +3433,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(52:0) {#if weatherItems}",
+    		source: "(53:0) {#if weatherItems}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (53:2) {#each weatherItems as item }
+    // (54:2) {#each weatherItems as item }
     function create_each_block(ctx) {
     	let ul;
     	let li;
@@ -3460,8 +3460,8 @@ var app = (function () {
     			create_component(weatheritem.$$.fragment);
     			t = space();
     			attr_dev(li, "class", "svelte-19l4tv2");
-    			add_location(li, file$1, 54, 6, 1297);
-    			add_location(ul, file$1, 53, 4, 1285);
+    			add_location(li, file$1, 55, 6, 1446);
+    			add_location(ul, file$1, 54, 4, 1434);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -3494,7 +3494,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(53:2) {#each weatherItems as item }",
+    		source: "(54:2) {#each weatherItems as item }",
     		ctx
     	});
 
@@ -3526,7 +3526,7 @@ var app = (function () {
     			t1 = space();
     			if_block.c();
     			if_block_anchor = empty();
-    			add_location(h1, file$1, 49, 0, 1200);
+    			add_location(h1, file$1, 50, 0, 1349);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3615,7 +3615,11 @@ var app = (function () {
 
     	beforeUpdate(async () => {
     		console.log('beforeUpdate');
+
+    		//tick 은 유일하게 컴포넌트가 초기화 또는 업데이트될때 언제든지 호출이 가능합니다.(그래서 다른 생명주기랑은 약간 느낌이 다릅니다)
+    		//tick 은 컴포넌트 상태변경이 DOM에 업데이트가 된걸 보장한 후(저는 확실히 DOM에 랜더링까지 반영되었다라고 이해를 하였습니다) Promise 객체를 반환합니다.
     		await tick(); // tick : 언제든지 호출가능 + 컴포넌트에 변경사항이 완료가 되었을때 Promise() 반환
+
     		console.log('tick()..');
     	});
 
