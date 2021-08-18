@@ -7,12 +7,7 @@ namespace AccountService.Implement
 {
     public class LoginService : ServiceExecutor<ACCOUNT, bool>, ILoginService
     {
-        public override Task<bool> ValidateAsync()
-        {
-            return base.ValidateAsync();
-        }
-
-        public override Task<bool> ExecuteAsync()
+        public override Task ExecuteAsync()
         {
             return base.ExecuteAsync();
         }

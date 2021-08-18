@@ -10,7 +10,8 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Data.SqlClient" Version="3.0.0" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
       <PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
       <PackageReference Include="RepoDb" Version="1.12.7" />
       <PackageReference Include="RepoDb.PostgreSql" Version="1.1.3" />

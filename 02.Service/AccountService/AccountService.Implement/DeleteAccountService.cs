@@ -6,12 +6,7 @@ namespace AccountService.Implement
 {
     public class DeleteAccountService : ServiceExecutor<long, bool>, IDeleteAccountService
     {
-        public override Task<bool> ValidateAsync()
-        {
-            return base.ValidateAsync();
-        }
-
-        public override Task<bool> ExecuteAsync()
+        public override Task ExecuteAsync()
         {
             return base.ExecuteAsync();
         }

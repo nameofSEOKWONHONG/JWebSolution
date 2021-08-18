@@ -15,14 +15,14 @@
 </style>
 
 <article>
-    <h1>{item.id}</h1>
+    <h1>{item.ID}</h1>
     <small>
-        date: <b>{item.date}</b>   
+        date: <b>{item.Date}</b>   
     </small><br/>
     <small>
-        temperatureC: <b>{item.temperatureC}</b>
+        temperatureC: <b>{item.TemperatureC}</b>
     </small><br/>
     <small>
-        summary: <b>{item.summary}</b>
+        summary: <b>{item.Summary}</b>
     </small>
 </article>

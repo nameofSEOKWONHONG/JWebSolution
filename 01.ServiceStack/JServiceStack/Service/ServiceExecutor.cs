@@ -2,31 +2,27 @@
 
 namespace JServiceStack.Service
 {
-    public class ServiceExecutor<TRequest, TResult> : ServiceBase<TResult>, IServiceExecutor<TRequest, TResult>
+    public class ServiceExecutor<TRequest, TResult> : ServiceBase, IServiceExecutor<TRequest, TResult>
     {
         protected ServiceExecutor()
         {
         }
 
         public TRequest Request { get; set; }
+        public TResult Result { get; set; }
 
         public override void Dispose()
         {
         }
-
-        public override Task<bool> ValidateAsync()
-        {
-            return Task.FromResult(true);
-        }
-
+        
         public override Task<bool> ExecutingAsync()
         {
             return Task.FromResult(true);
         }
 
-        public override Task<TResult> ExecuteAsync()
+        public override Task ExecuteAsync()
         {
-            return null;
+            return Task.CompletedTask;
         }
 
         public override Task ExecutedAsync()

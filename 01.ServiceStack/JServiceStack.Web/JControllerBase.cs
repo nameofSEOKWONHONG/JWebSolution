@@ -25,12 +25,12 @@ namespace JServiceStack.Web
         }
 
         protected async Task<TResult> SerivceExecuteAsync<TService, TRequest, TResult>(TService service, TRequest request)
-            where TService : IServiceBase<TResult>
+            where TService : IServiceBase
         {
-            var rlt = default(TResult);
-            var serviceExecutor = new ServiceExecutorManager<TService, TResult>(service);
-            rlt = await serviceExecutor.ExecuteAsync();
-            return rlt;
+            var result = default(TResult);
+            var serviceExecutor = new ServiceExecutorManager<TService, TRequest, TResult>(service, request);
+            result = await serviceExecutor.ExecuteAsync();
+            return result;
         }
     }
 

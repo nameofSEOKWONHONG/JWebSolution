@@ -14,11 +14,6 @@ namespace AccountService.Implement
     public class GetAccountService : ServiceExecutor<long, ACCOUNT>,
         IGetAccountService
     {
-        public override Task<bool> ValidateAsync()
-        {
-            return Task.FromResult(true);
-        }
-
         public override async Task<ACCOUNT> ExecuteAsync()
         {
             return await Task.Run(() => new ACCOUNT()

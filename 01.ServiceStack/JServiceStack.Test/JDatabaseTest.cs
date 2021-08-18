@@ -47,9 +47,19 @@ namespace JServiceStack.Test
                 .ExecuteAsync(async db => await db.QueryAsync<Person>(m => m.ID == 1));
             Assert.NotNull(person.First());
             Assert.AreEqual(person.First().AGE, 18);
-            
+
             var deletedRow = await JDatabaseResolver.Resolve<SqlConnection>()
-                .ExecuteAsync(async db => await db.DeleteAsync<Person>(person));
+                .ExecuteAsync(async db =>
+                {
+                    var persons = await db.QueryAsync<Person>(m => m.ID == 1);
+                    var selectedItem = persons.FirstOrDefault();
+                    if (selectedItem.xIsNotEmpty())
+                    {
+                        return await db.DeleteAsync<Person>(selectedItem);    
+                    }
+
+                    return 0;
+                });
             Assert.Greater(deletedRow, 0);
         }
     }

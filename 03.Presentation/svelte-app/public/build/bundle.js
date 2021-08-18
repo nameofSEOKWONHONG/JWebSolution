@@ -3131,13 +3131,13 @@ var app = (function () {
     function create_fragment$2(ctx) {
     	let article;
     	let h1;
-    	let t0_value = /*item*/ ctx[0].id + "";
+    	let t0_value = /*item*/ ctx[0].ID + "";
     	let t0;
     	let t1;
     	let small0;
     	let t2;
     	let b0;
-    	let t3_value = /*item*/ ctx[0].date + "";
+    	let t3_value = /*item*/ ctx[0].Date + "";
     	let t3;
     	let t4;
     	let br0;
@@ -3145,7 +3145,7 @@ var app = (function () {
     	let small1;
     	let t6;
     	let b1;
-    	let t7_value = /*item*/ ctx[0].temperatureC + "";
+    	let t7_value = /*item*/ ctx[0].TemperatureC + "";
     	let t7;
     	let t8;
     	let br1;
@@ -3153,7 +3153,7 @@ var app = (function () {
     	let small2;
     	let t10;
     	let b2;
-    	let t11_value = /*item*/ ctx[0].summary + "";
+    	let t11_value = /*item*/ ctx[0].Summary + "";
     	let t11;
 
     	const block = {
@@ -3221,10 +3221,10 @@ var app = (function () {
     			append_dev(b2, t11);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*item*/ 1 && t0_value !== (t0_value = /*item*/ ctx[0].id + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*item*/ 1 && t3_value !== (t3_value = /*item*/ ctx[0].date + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*item*/ 1 && t7_value !== (t7_value = /*item*/ ctx[0].temperatureC + "")) set_data_dev(t7, t7_value);
-    			if (dirty & /*item*/ 1 && t11_value !== (t11_value = /*item*/ ctx[0].summary + "")) set_data_dev(t11, t11_value);
+    			if (dirty & /*item*/ 1 && t0_value !== (t0_value = /*item*/ ctx[0].ID + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*item*/ 1 && t3_value !== (t3_value = /*item*/ ctx[0].Date + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*item*/ 1 && t7_value !== (t7_value = /*item*/ ctx[0].TemperatureC + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*item*/ 1 && t11_value !== (t11_value = /*item*/ ctx[0].Summary + "")) set_data_dev(t11, t11_value);
     		},
     		i: noop,
     		o: noop,
@@ -3680,7 +3680,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "Page Not Found";
     			attr_dev(h1, "class", "svelte-1ralesy");
-    			add_location(h1, file, 43, 2, 998);
+    			add_location(h1, file, 43, 2, 1024);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -3871,11 +3871,11 @@ var app = (function () {
     			li0 = element("li");
     			a0 = element("a");
     			a0.textContent = "Home";
-    			t2 = text(" |\n\t\t");
+    			t2 = text(" |\r\n\t\t");
     			li1 = element("li");
     			a1 = element("a");
     			a1.textContent = "Counter";
-    			t4 = text(" |\n\t\t");
+    			t4 = text(" |\r\n\t\t");
     			li2 = element("li");
     			a2 = element("a");
     			a2.textContent = "WeatherForecast";
@@ -3894,29 +3894,29 @@ var app = (function () {
     			t14 = text(" to learn how to build Svelte apps.");
     			attr_dev(link, "rel", "stylesheet");
     			attr_dev(link, "href", "https://cdn.jsdelivr.net/npm/svelte-material-ui@4.0.0/bare.min.css");
-    			add_location(link, file, 28, 1, 506);
+    			add_location(link, file, 28, 1, 517);
     			attr_dev(a0, "href", "/");
-    			add_location(a0, file, 31, 6, 629);
+    			add_location(a0, file, 31, 6, 643);
     			attr_dev(li0, "class", "svelte-1ralesy");
-    			add_location(li0, file, 31, 2, 625);
+    			add_location(li0, file, 31, 2, 639);
     			attr_dev(a1, "href", "/");
-    			add_location(a1, file, 32, 6, 706);
+    			add_location(a1, file, 32, 6, 721);
     			attr_dev(li1, "class", "svelte-1ralesy");
-    			add_location(li1, file, 32, 2, 702);
+    			add_location(li1, file, 32, 2, 717);
     			attr_dev(a2, "href", "/");
-    			add_location(a2, file, 33, 6, 786);
+    			add_location(a2, file, 33, 6, 802);
     			attr_dev(li2, "class", "svelte-1ralesy");
-    			add_location(li2, file, 33, 2, 782);
+    			add_location(li2, file, 33, 2, 798);
     			attr_dev(ul, "id", "menu");
     			attr_dev(ul, "class", "svelte-1ralesy");
-    			add_location(ul, file, 30, 1, 608);
+    			add_location(ul, file, 30, 1, 621);
     			attr_dev(h1, "class", "svelte-1ralesy");
-    			add_location(h1, file, 48, 1, 1038);
+    			add_location(h1, file, 48, 1, 1069);
     			attr_dev(a3, "href", "https://svelte.dev/tutorial");
-    			add_location(a3, file, 49, 14, 1075);
-    			add_location(p, file, 49, 1, 1062);
+    			add_location(a3, file, 49, 14, 1107);
+    			add_location(p, file, 49, 1, 1094);
     			attr_dev(main, "class", "svelte-1ralesy");
-    			add_location(main, file, 27, 0, 498);
+    			add_location(main, file, 27, 0, 508);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

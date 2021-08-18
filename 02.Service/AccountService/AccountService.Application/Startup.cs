@@ -1,4 +1,7 @@
 ﻿using AccountService.Application;
+using AccountService.Application.Controllers;
+using JServiceStack.Injection;
+using JServiceStack.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +38,10 @@ namespace AccountPlugin
 
             var configuration = new PluginConfiguration();
             configuration.Configure(services);
+
+            services.AddSingleton<IValidatorBase, AValidator>();
+            services.AddSingleton<IExecutorBase, AExecutor>();
+            ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

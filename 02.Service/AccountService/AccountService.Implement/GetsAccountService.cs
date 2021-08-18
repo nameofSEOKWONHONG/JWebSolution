@@ -8,12 +8,7 @@ namespace AccountService.Implement
 {
     public class GetsAccountService : ServiceExecutor<ACCOUNT, IEnumerable<ACCOUNT>>, IGetsAccountService
     {
-        public override Task<bool> ValidateAsync()
-        {
-            return base.ValidateAsync();
-        }
-
-        public override Task<IEnumerable<ACCOUNT>> ExecuteAsync()
+        public override Task ExecuteAsync()
         {
             return base.ExecuteAsync();
         }
