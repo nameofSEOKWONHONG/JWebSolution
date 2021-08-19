@@ -25,7 +25,11 @@ namespace AccountPlugin
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
+                .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null)
+                .AddMvcOptions(options =>
+                {
+                    options.ModelBinderProviders.Insert(0, new JDataContextBinderProvider());
+                });
             
             services.AddSwaggerGen(c =>
             {
@@ -54,6 +58,8 @@ namespace AccountPlugin
                 app.UseSwaggerUI(c =>
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "AccountService.Implement.Application v1"));
             }
+
+            app.UseJDataContext();
 
             app.UseHttpsRedirection();
 

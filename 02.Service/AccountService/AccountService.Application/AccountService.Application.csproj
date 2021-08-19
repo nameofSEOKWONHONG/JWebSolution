@@ -15,4 +15,10 @@
       <ProjectReference Include="..\AccountService.Implement\AccountService.Implement.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="Workflow\WorkflowSample\Sample.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

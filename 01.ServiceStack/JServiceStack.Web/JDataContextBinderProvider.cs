@@ -1,0 +1,19 @@
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Newtonsoft.Json;
+
+namespace JServiceStack.Web
+{
+    public class JDataContextBinderProvider : IModelBinderProvider {
+        public IModelBinder GetBinder(ModelBinderProviderContext context)
+        {
+            if (context.Metadata.ModelType == typeof(JDataContext))
+                return new JDataContextBinder();
+
+            return null;
+        }
+    }
+}

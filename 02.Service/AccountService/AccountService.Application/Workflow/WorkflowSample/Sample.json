@@ -1,0 +1,8 @@
+﻿{
+  "Validators": [
+    "AccountService.Application.Controllers.AValidator"
+  ],
+  "Executors": [
+    "AccountService.Application.Controllers.AExecutor"
+  ]
+}

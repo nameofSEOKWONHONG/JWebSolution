@@ -28,9 +28,23 @@ namespace JServiceStack.Web
             return this;
         }
 
+        public IWorkFlowBase AddValidator(Type serviceType)
+        {
+            var validator = (IValidatorBase)ServiceLocator.Current.GetInstance(serviceType);
+            _validatorBases.Add(validator);
+            return this;            
+        }
+
         public IWorkFlowBase AddExecutor<TExecutor>() where TExecutor : IExecutorBase
         {
             var executor = ServiceLocator.Current.GetInstance<TExecutor>();
+            _executorBases.Add(executor);
+            return this;
+        }
+
+        public IWorkFlowBase AddExecutor(Type serviceType)
+        {
+            var executor = (IExecutorBase)ServiceLocator.Current.GetInstance(serviceType);
             _executorBases.Add(executor);
             return this;
         }
