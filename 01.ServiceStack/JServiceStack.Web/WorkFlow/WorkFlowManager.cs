@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using eXtensionSharp;
 using JServiceStack.Injection;
@@ -21,9 +23,24 @@ namespace JServiceStack.Web
             return workflow;
         }
 
+        private static List<Assembly> _contractDlls = new List<Assembly>();
+
         public static IWorkFlowBase CreateWorkFlow(JDataContext context)
         {
             var workflow = new WorkFlowBase();
+
+            if (_contractDlls.xIsEmpty())
+            {
+                var contractFiles = Directory.GetFiles(AppContext.BaseDirectory, "*.dll");
+                contractFiles.xForEach(item =>
+                {
+                    if (item.Contains(".Implement"))
+                    {
+                        _contractDlls.Add(Assembly.LoadFile(item));
+                    }
+                });                
+            }
+
 
             //var env = ServiceLocator.Current.GetInstance<IHostEnvironment>();
             //var workflowJsonPath = Path.Combine(env.ContentRootPath, $"/Workflow/{context.ControllerName}/{context.ActionName}");
@@ -32,13 +49,13 @@ namespace JServiceStack.Web
             var dto = text.xToEntity<WorkFlowDto>();
             dto.Validators.xForEach(v =>
             {
-                var type = CreateType(v);
+                var assembly = _contractDlls.FirstOrDefault();
+                var type = (IValidatorBase)assembly.CreateInstance(v);
                 workflow.AddValidator(type);
             });
             dto.Executors.xForEach(e =>
             {
-                var type = CreateType(e);
-                workflow.AddExecutor(type);
+                
             });
 
             return workflow;
@@ -58,6 +75,14 @@ namespace JServiceStack.Web
             ((WorkFlowBase)workflow).Execute(context);
             var okResult = new OkObjectResult(context.Response);
             return okResult;
+        }
+    }
+
+    public class AssemblyLoader
+    {
+        public static Assembly LoadFile(string path)
+        {
+            return Assembly.LoadFile(path);
         }
     }
 

@@ -16,13 +16,6 @@ namespace AccountService.Application.Controllers
         [HttpPost]
         public IActionResult Sample(JDataContext context)
         {
-            context.ControllerName = ControllerContext.ActionDescriptor.ControllerName;
-            context.ActionName = ControllerContext.ActionDescriptor.ActionName;
-            context.Request["id"] = "";
-            //or
-            //context.Request["id"] = "test123";
-
-            var t = typeof(AValidator);
             var workFlow = WorkFlowManager.CreateWorkFlow(context);
             // workFlow.AddValidator<IValidatorBase>();
             // workFlow.AddExecutor<IExecutorBase>();
@@ -30,23 +23,7 @@ namespace AccountService.Application.Controllers
         }
     }
 
-    public interface IAValidator : IValidatorBase
-    {
-    }
 
-    public class AValidator : IAValidator
-    {
-        public string Name => "AccountService.Application.Controllers.AValidator";
-
-        public void Validate(JDataContext context)
-        {
-            var id = context.Request["id"].xSafe();
-            if (id.xIsEmpty())
-            {
-                throw new Exception("id is empty.");
-            }
-        }
-    }
 
     public interface IAExecutor : IExecutorBase
     {

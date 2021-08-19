@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using eXtensionSharp;
 using JServiceStack.Injection;
+using Microsoft.Extensions.Options;
 
 namespace JServiceStack.Web
 {
@@ -28,9 +29,8 @@ namespace JServiceStack.Web
             return this;
         }
 
-        public IWorkFlowBase AddValidator(Type serviceType)
+        public IWorkFlowBase AddValidator(IValidatorBase validator)
         {
-            var validator = (IValidatorBase)ServiceLocator.Current.GetInstance(serviceType);
             _validatorBases.Add(validator);
             return this;            
         }
@@ -42,9 +42,9 @@ namespace JServiceStack.Web
             return this;
         }
 
-        public IWorkFlowBase AddExecutor(Type serviceType)
+        public IWorkFlowBase AddExecutor(Type executorType)
         {
-            var executor = (IExecutorBase)ServiceLocator.Current.GetInstance(serviceType);
+            var executor = (IExecutorBase)ServiceLocator.Current.GetInstance(executorType);
             _executorBases.Add(executor);
             return this;
         }

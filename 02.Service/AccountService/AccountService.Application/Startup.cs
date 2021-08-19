@@ -1,5 +1,7 @@
 ﻿using AccountService.Application;
 using AccountService.Application.Controllers;
+using AccountService.Contract.Interfaces;
+using AccountService.Implement;
 using JServiceStack.Injection;
 using JServiceStack.Web;
 using Microsoft.AspNetCore.Builder;
@@ -43,8 +45,8 @@ namespace AccountPlugin
             var configuration = new PluginConfiguration();
             configuration.Configure(services);
 
-            services.AddSingleton<IValidatorBase, AValidator>();
-            services.AddSingleton<IExecutorBase, AExecutor>();
+            services.AddSingleton<IAValidator, AValidator>();
+            services.AddSingleton<IAExecutor, AExecutor>();
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
         }
 
