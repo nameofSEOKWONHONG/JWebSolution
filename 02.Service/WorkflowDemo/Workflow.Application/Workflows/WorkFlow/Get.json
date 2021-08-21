@@ -1,0 +1,11 @@
+﻿{
+  "Validators": [
+    "Implement.AValidator"
+  ],
+  "Executors": [
+    {
+      "Executor":"Implement.AExecutor",
+      "Executors": []
+    }
+  ]
+}

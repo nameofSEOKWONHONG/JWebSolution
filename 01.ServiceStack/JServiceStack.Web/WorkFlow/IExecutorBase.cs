@@ -3,6 +3,6 @@
     public interface IExecutorBase
     {
         string Name { get; }
-        void Execute(JDataContext context);
+        void Execute(RequestDataContext context);
     }
 }

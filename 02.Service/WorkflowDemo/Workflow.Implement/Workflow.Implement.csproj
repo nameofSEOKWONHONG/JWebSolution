@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\01.ServiceStack\JServiceStack.Web\JServiceStack.Web.csproj" />
+      <ProjectReference Include="..\..\AccountService\AccountService.Contract\AccountService.Contract.csproj" />
+      <ProjectReference Include="..\Workflow.Contract\Workflow.Contract.csproj" />
+    </ItemGroup>
+
+</Project>

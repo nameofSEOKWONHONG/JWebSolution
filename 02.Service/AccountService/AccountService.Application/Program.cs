@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace AccountPlugin
+namespace AccountService.Application
 {
     public class Program
     {

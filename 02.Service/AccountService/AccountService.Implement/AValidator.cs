@@ -9,9 +9,9 @@ namespace AccountService.Implement
     {
         public string Name => "AccountService.Implement.AValidator";
 
-        public void Validate(JDataContext context)
+        public void Validate(RequestDataContext context)
         {
-            var id = context.Request["id"].xSafe();
+            var id = context.Request["id"].xGetValue();
             if (id.xIsEmpty())
             {
                 throw new Exception("id is empty.");

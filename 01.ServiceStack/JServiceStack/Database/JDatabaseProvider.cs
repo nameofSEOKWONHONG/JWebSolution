@@ -43,8 +43,8 @@ namespace JServiceStack.Database
                             var configJson = configFile.xFileReadAllText();
 
                             var jconfig = configJson.xToEntity<JDatabaseConfig>();
-                            _providerMaps.Add(ENUM_DATABASE_TYPE.MSSQL.xSafe(), jconfig.ConfigProvider.MSSQL);
-                            _providerMaps.Add(ENUM_DATABASE_TYPE.POSTGRESQL.xSafe(),
+                            _providerMaps.Add(ENUM_DATABASE_TYPE.MSSQL.xGetValue(), jconfig.ConfigProvider.MSSQL);
+                            _providerMaps.Add(ENUM_DATABASE_TYPE.POSTGRESQL.xGetValue(),
                                 jconfig.ConfigProvider.POSTGRESQL);
                         }
                     }

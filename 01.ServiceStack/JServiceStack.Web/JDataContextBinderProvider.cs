@@ -10,7 +10,7 @@ namespace JServiceStack.Web
     public class JDataContextBinderProvider : IModelBinderProvider {
         public IModelBinder GetBinder(ModelBinderProviderContext context)
         {
-            if (context.Metadata.ModelType == typeof(JDataContext))
+            if (context.Metadata.ModelType == typeof(RequestDataContext))
                 return new JDataContextBinder();
 
             return null;

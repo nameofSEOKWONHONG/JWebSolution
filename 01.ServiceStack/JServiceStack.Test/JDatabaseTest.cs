@@ -37,7 +37,7 @@ namespace JServiceStack.Test
                     var p1 = new Person() { NAME = "TEST2", AGE = 18 };
                     return await db.InsertAsync(p1);
                 });
-            Assert.Greater(id.xSafe<int>(), 0);
+            Assert.Greater(id.xGetValue<int>(), 0);
             
             var persons = await JDatabaseResolver.Resolve<SqlConnection>()
                 .ExecuteAsync(async db => await db.QueryAllAsync<Person>());
