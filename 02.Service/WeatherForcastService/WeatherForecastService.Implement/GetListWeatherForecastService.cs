@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Entity;
+using JServiceStack.Database;
 using JServiceStack.Service;
+using Microsoft.Data.SqlClient;
 using WeatherForecastService.Contract.Interfaces;
+using RepoDb;
 
 namespace WeatherForecastService.Implement
 {
@@ -21,22 +22,24 @@ namespace WeatherForecastService.Implement
             return base.ExecutingAsync();
         }
 
-        public override async Task<IEnumerable<WEATHER_FORECAST>> ExecuteAsync()
+        public override async Task ExecuteAsync()
         {
-            var results = new List<WEATHER_FORECAST>();
-            return await Task.Run(() =>
-            {
-                var rng = new Random();
-                results.AddRange(Enumerable.Range(1, 5).Select(index => new WEATHER_FORECAST
-                    {
-                        ID = index,
-                        Date = DateTime.Now.AddDays(index),
-                        TemperatureC = rng.Next(-20, 55),
-                        Summary = Summaries[rng.Next(Summaries.Length)]
-                    })
-                    .ToArray());
-                return results;
-            });
+            this.Result = await JDatabaseResolver.Resolve<SqlConnection>()
+                .ExecuteAsync(async db => await db.QueryAllAsync<WEATHER_FORECAST>());
+            //var results = new List<WEATHER_FORECAST>();
+            // return await Task.Run(() =>
+            // {
+            //     var rng = new Random();
+            //     results.AddRange(Enumerable.Range(1, 5).Select(index => new WEATHER_FORECAST
+            //         {
+            //             ID = index,
+            //             DATE = DateTime.Now.AddDays(index),
+            //             TEMP_C = rng.Next(-20, 55),
+            //             SUMMARY = Summaries[rng.Next(Summaries.Length)]
+            //         })
+            //         .ToArray());
+            //     return results;
+            // });
         }
 
         public override Task ExecutedAsync()

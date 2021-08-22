@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using JServiceStack.Service;
+using JServiceStack.Workflow;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
@@ -27,12 +28,18 @@ namespace JServiceStack.Web
         protected async Task<TResult> SerivceExecuteAsync<TService, TRequest, TResult>(TService service, TRequest request)
             where TService : IServiceBase
         {
-            var result = default(TResult);
             var serviceExecutor = new ServiceExecutorManager<TService, TRequest, TResult>(service, request);
-            result = await serviceExecutor.ExecuteAsync();
+            var result = await serviceExecutor.ExecuteAsync();
             return result;
         }
+
+        protected async Task<IActionResult> RunWorkflowAsync(IWorkflowBase workflow, RequestDataContext context)
+        {
+            return await Task.Run(() =>
+            {
+                ((WorkflowBase)workflow).Execute(context);
+                return Ok(context.Response);
+            });
+        }
     }
-
-
 }

@@ -12,9 +12,15 @@ namespace JServiceStack.Database
         {
             IDbConnection connection = null;
             if (typeof(TDbConnection) == typeof(SqlConnection))
+            {
+                RepoDb.SqlServerBootstrap.Initialize();
                 connection = JDatabaseInfo.Instance.GetConnection(ENUM_DATABASE_TYPE.MSSQL);
+            }
             else if (typeof(TDbConnection) == typeof(NpgsqlConnection))
+            {
+                RepoDb.PostgreSqlBootstrap.Initialize();
                 connection = JDatabaseInfo.Instance.GetConnection(ENUM_DATABASE_TYPE.POSTGRESQL);
+            }
             else
                 throw new NotImplementedException();
 

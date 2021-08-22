@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JServiceStack.Web
+﻿namespace JServiceStack.Workflow
 {
     public interface IWorkflowBase
     {

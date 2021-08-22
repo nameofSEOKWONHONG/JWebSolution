@@ -1,6 +1,4 @@
-﻿using System.Security;
-
-namespace JServiceStack.Web
+﻿namespace JServiceStack.Workflow
 {
     public interface IValidatorBase
     {

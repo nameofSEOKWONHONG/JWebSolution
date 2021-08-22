@@ -1,8 +1,0 @@
-﻿{
-  "Validators": [
-    "AccountService.Implement.AValidator"
-  ],
-  "Executors": [
-    "AccountService.Application.Controllers.IAExecutor"
-  ]
-}

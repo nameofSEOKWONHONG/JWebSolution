@@ -1,5 +1,4 @@
-﻿using System;
-using JServiceStack.Web;
+﻿using JServiceStack.Workflow;
 
 namespace Workflow.Contract
 {

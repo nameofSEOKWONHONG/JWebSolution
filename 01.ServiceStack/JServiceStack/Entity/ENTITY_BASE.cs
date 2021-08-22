@@ -8,7 +8,9 @@ namespace JServiceStack.Entity
     {
         [Key] 
         public long ID { get; set; }
+        [NotNull]
         public long WRITER_ID { get; set; }
+        [NotNull]
         public DateTime WRITE_DTM { get; set; }
         public long UPDATOR_ID { get; set; }
         public DateTime? UPDATE_DTM { get; set; }

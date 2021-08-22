@@ -1,4 +1,4 @@
-﻿namespace JServiceStack.Web
+﻿namespace JServiceStack.Workflow
 {
     public interface IExecutorBase
     {

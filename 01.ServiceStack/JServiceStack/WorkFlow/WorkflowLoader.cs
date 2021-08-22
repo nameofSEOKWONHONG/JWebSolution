@@ -4,9 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using eXtensionSharp;
-using Newtonsoft.Json;
 
-namespace JServiceStack.Web
+namespace JServiceStack.Workflow
 {
     /// <summary>
     ///     동적 Instance를 생성하고 workflow json파일을 읽어 작업 단위를 생성한다.

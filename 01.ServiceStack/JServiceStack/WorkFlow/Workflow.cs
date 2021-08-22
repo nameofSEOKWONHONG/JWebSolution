@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Transactions;
 using eXtensionSharp;
 using JServiceStack.Injection;
-using Microsoft.Extensions.Options;
 
-namespace JServiceStack.Web
+namespace JServiceStack.Workflow
 {   
     /// <summary>
     /// 위크플로우 구현

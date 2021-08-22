@@ -19,20 +19,17 @@ namespace JServiceStack.Database
             _connection?.Dispose();
         }
 
-        public TResult Execute<TResult>(Func<IDbConnection, TResult> action,
-            IsolationLevel isolationLevel = IsolationLevel.ReadUncommitted)
+        public TResult Execute<TResult>(Func<IDbConnection, TResult> action)
         {
             TResult result;
-            using (var tran = _connection.EnsureOpen().BeginTransaction(isolationLevel))
+            using (var con = _connection.EnsureOpen())
             {
                 try
                 {
                     result = action(_connection);
-                    tran.Commit();
                 }
                 catch (Exception e)
                 {
-                    tran.Rollback();
                     throw;
                 }
                 finally
@@ -44,28 +41,23 @@ namespace JServiceStack.Database
             return result;
         }
 
-        public async Task<TResult> ExecuteAsync<TResult>(Func<IDbConnection, Task<TResult>> action,
-            IsolationLevel isolationLevel = IsolationLevel.ReadUncommitted)
+        public async Task<TResult> ExecuteAsync<TResult>(Func<IDbConnection, Task<TResult>> action)
         {
             TResult result;
             using (var connection = await _connection.EnsureOpenAsync())
             {
-                using (var tran = connection.BeginTransaction(isolationLevel))
+                try
                 {
-                    try
-                    {
-                        result = await action(connection);
-                        tran.Commit();
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
-                    finally
-                    {
-                        _connection.Close();
-                    }
+                    result = await action(connection);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                finally
+                {
+                    _connection.Close();
                 }
             }
 

@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using eXtensionSharp;
+﻿using eXtensionSharp;
 
-namespace JServiceStack.Web
+namespace JServiceStack.Workflow
 {
     public class RequestDataContext
     {

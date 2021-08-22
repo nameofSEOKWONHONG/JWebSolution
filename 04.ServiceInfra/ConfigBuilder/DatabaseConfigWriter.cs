@@ -14,7 +14,7 @@ namespace ConfigBuilder
             var chipper = Convert.ToBase64String(Guid.NewGuid().ToByteArray()).xSubstring(0, 16);
             var configProvider = new JDatabaseConfigProvider();
             configProvider.MSSQL =
-                "Data Source=192.168.55.204,1433;Initial Catalog=TEST;User ID=sa;Password=1q2w3e4r!Q@W#E$R".xToEncAES256(
+                "Data Source=172.19.1.56,1433;Initial Catalog=TEST;User ID=sa;Password=1q2w3e4r!Q@W#E$R".xToEncAES256(
                     key, chipper, CipherMode.CBC, PaddingMode.PKCS7);
             configProvider.POSTGRESQL = "Server=192.168.55.204;Port=5432;Database=testdb;User Id=seokwon;Password=1q2w3e4r!Q@W#E$R;".xToEncAES256(
                 key, chipper, CipherMode.CBC, PaddingMode.PKCS7);

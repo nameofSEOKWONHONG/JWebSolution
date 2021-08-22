@@ -19,9 +19,9 @@ namespace JServiceStack.Database
             JDatabaseKeyIVProvider.Instance.Key,
             JDatabaseKeyIVProvider.Instance.IV, CipherMode.CBC, PaddingMode.PKCS7, DeconvertCipherFormat.HEX);
 
-        public readonly string MYSQL = ProviderMaps[ENUM_DATABASE_TYPE.MYSQL.ToString()].xToDecAES256(
-            JDatabaseKeyIVProvider.Instance.Key,
-            JDatabaseKeyIVProvider.Instance.IV, CipherMode.CBC, PaddingMode.PKCS7, DeconvertCipherFormat.HEX);
+        // public readonly string MYSQL = ProviderMaps[ENUM_DATABASE_TYPE.MYSQL.ToString()].xToDecAES256(
+        //     JDatabaseKeyIVProvider.Instance.Key,
+        //     JDatabaseKeyIVProvider.Instance.IV, CipherMode.CBC, PaddingMode.PKCS7, DeconvertCipherFormat.HEX);
 
         public readonly string POSTGRESQL = ProviderMaps[ENUM_DATABASE_TYPE.POSTGRESQL.ToString()].xToDecAES256(
             JDatabaseKeyIVProvider.Instance.Key,
